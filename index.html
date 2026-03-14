@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Controle de Entregas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header>
+    <h1>Eridenes Santos</h1>
+    <img src="Captura de tela 2026-03-14 103201.png" alt="logomar te entrego">
+</header>
+
+<form id="form">
+
+<input id="empresa" placeholder="Empresa">
+
+<input id="bairro" placeholder="Bairro">
+
+<input id="valor" type="number" placeholder="Valor da entrega">
+
+<select id="pagamento">
+<option value="dinheiro">Dinheiro</option>
+<option value="pix">Pix</option>
+<option value="pendente">Pendente</option>
+</select>
+
+<button>Registrar Entrega</button>
+
+</form>
+
+<div class="container">
+
+<h1>📦 Controle de Entregas</h1>
+
+<div class="grid">
+
+<div class="card">
+<h3>Total do Dia</h3>
+<span id="total">0</span>
+</div>
+
+<div class="card">
+<h3>Total Dinheiro</h3>
+<span id="dinheiro">0</span>
+</div>
+
+<div class="card">
+<h3>Total Pix</h3>
+<span id="pix">0</span>
+</div>
+
+<div class="card">
+<h3>Total Pendente</h3>
+<span id="pendente">0</span>
+</div>
+
+<div class="card">
+<h3>Total Entregas</h3>
+<span id="entregas">0</span>
+</div>
+
+</div>
+
+
+<div class="tables">
+
+<table>
+<thead>
+<tr>
+<th>Bairro</th>
+<th>Entregas</th>
+</tr>
+</thead>
+
+<tbody id="bairros"></tbody>
+
+</table>
+
+
+<table>
+<thead>
+<tr>
+<th>Empresa</th>
+<th>Entregas</th>
+</tr>
+</thead>
+
+<tbody id="empresas"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
