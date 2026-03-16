@@ -37,38 +37,50 @@ let total=0
 let dinheiro=0
 let pix=0
 let pendente=0
-let entregas=dados.length
+let despesas=0
+let entregas=0
 
 let bairros={}
 let empresas={}
 
 dados.forEach(e=>{
 
+if(e.pagamento=="despesa"){
+
+despesas+=Number(e.valor)
+
+}else{
+
 total+=Number(e.valor)
+entregas++
 
 if(e.pagamento=="dinheiro"){
 dinheiro+=Number(e.valor)
 }
+
 if(e.pagamento=="pix"){
 pix+=Number(e.valor)
 }
+
 if(e.pagamento=="pendente"){
 pendente+=Number(e.valor)
 }
 
-bairros[e.bairro]=(bairros[e.bairro]||0)+1
+}
 
+bairros[e.bairro]=(bairros[e.bairro]||0)+1
 empresas[e.empresa]=(empresas[e.empresa]||0)+1
 
 })
 
+let valorDia = total - despesas
 
 
-
-document.getElementById("total").innerText="R$ "+total
+document.getElementById("total").innerText="R$ "+valorDia
 document.getElementById("dinheiro").innerText="R$ "+dinheiro
 document.getElementById("pix").innerText="R$ "+pix
 document.getElementById("pendente").innerText="R$ "+pendente
+document.getElementById("despesa").innerText="R$ "+despesas
 document.getElementById("entregas").innerText=entregas
 
 

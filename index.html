@@ -20,15 +20,16 @@
 
 <input id="bairro" placeholder="Bairro">
 
-<input id="valor" type="number" placeholder="Valor da entrega">
+<input id="valor" type="number" placeholder="Valor">
 
 <select id="pagamento">
 <option value="dinheiro">Dinheiro</option>
 <option value="pix">Pix</option>
 <option value="pendente">Pendente</option>
+<option value="despesa">Despesa</option>
 </select>
 
-<button>Registrar Entrega</button>
+<button>Registrar</button>
 
 </form>
 
@@ -54,8 +55,13 @@
 </div>
 
 <div class="card">
-<h3>Total Pendente</h3>
+<h3>Pendente</h3>
 <span id="pendente">0</span>
+</div>
+
+<div class="card">
+<h3>Despesas</h3>
+<span id="despesa">0</span>
 </div>
 
 <div class="card">
