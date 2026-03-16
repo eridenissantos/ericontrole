@@ -7,12 +7,10 @@ form.addEventListener("submit",async e=>{
 e.preventDefault()
 
 const dados={
-
 empresa:empresa.value,
 bairro:bairro.value,
 valor:valor.value,
 pagamento:pagamento.value
-
 }
 
 await fetch(API,{
@@ -21,7 +19,6 @@ body:JSON.stringify(dados)
 })
 
 form.reset()
-
 carregar()
 
 })
@@ -30,7 +27,6 @@ carregar()
 async function carregar(){
 
 const res=await fetch(API)
-
 const dados=await res.json()
 
 let total=0
@@ -45,25 +41,27 @@ let empresas={}
 
 dados.forEach(e=>{
 
+const valor = Number(e.valor) || 0
+
 if(e.pagamento=="despesa"){
 
-despesas+=Number(e.valor)
+despesas+=valor
 
 }else{
 
-total+=Number(e.valor)
+total+=valor
 entregas++
 
 if(e.pagamento=="dinheiro"){
-dinheiro+=Number(e.valor)
+dinheiro+=valor
 }
 
 if(e.pagamento=="pix"){
-pix+=Number(e.valor)
+pix+=valor
 }
 
 if(e.pagamento=="pendente"){
-pendente+=Number(e.valor)
+pendente+=valor
 }
 
 }
@@ -74,7 +72,6 @@ empresas[e.empresa]=(empresas[e.empresa]||0)+1
 })
 
 let valorDia = total - despesas
-
 
 document.getElementById("total").innerText="R$ "+valorDia
 document.getElementById("dinheiro").innerText="R$ "+dinheiro
@@ -90,12 +87,10 @@ tbBairros.innerHTML=""
 for(let b in bairros){
 
 tbBairros.innerHTML+=`
-
 <tr>
 <td>${b}</td>
 <td>${bairros[b]}</td>
 </tr>
-
 `
 
 }
@@ -106,12 +101,10 @@ tbEmpresas.innerHTML=""
 for(let e in empresas){
 
 tbEmpresas.innerHTML+=`
-
 <tr>
 <td>${e}</td>
 <td>${empresas[e]}</td>
 </tr>
-
 `
 
 }
