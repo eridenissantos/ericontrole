@@ -72,8 +72,10 @@ empresas[e.empresa]=(empresas[e.empresa]||0)+1
 })
 
 let valorDia = total - despesas
+let faturamento = total
 
 document.getElementById("total").innerText="R$ "+valorDia
+document.getElementById("faturamento").innerText="R$ "+faturamento
 document.getElementById("dinheiro").innerText="R$ "+dinheiro
 document.getElementById("pix").innerText="R$ "+pix
 document.getElementById("pendente").innerText="R$ "+pendente
