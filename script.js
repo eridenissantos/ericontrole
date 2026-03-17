@@ -2,14 +2,31 @@ const API="https://script.google.com/macros/s/AKfycbynYN8XS4Y5bx9XPzqCiSQsnHkJ25
 
 const form=document.getElementById("form")
 
+// pegar inputs corretamente
+const empresa = document.getElementById("empresa")
+const bairro = document.getElementById("bairro")
+const valor = document.getElementById("valor")
+const pagamento = document.getElementById("pagamento")
+
+// formatar dinheiro BR
+function formatar(v){
+return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})
+}
+
 form.addEventListener("submit",async e=>{
 
 e.preventDefault()
 
+// validar campos
+if(!empresa.value || !bairro.value || !valor.value){
+alert("Preencha todos os campos!")
+return
+}
+
 const dados={
 empresa:empresa.value,
 bairro:bairro.value,
-valor:valor.value,
+valor:Number(valor.value),
 pagamento:pagamento.value
 }
 
@@ -19,7 +36,9 @@ body:JSON.stringify(dados)
 })
 
 form.reset()
-carregar()
+
+// pequeno delay pra garantir atualização
+setTimeout(carregar,500)
 
 })
 
@@ -66,6 +85,7 @@ pendente+=valor
 
 }
 
+// mantém como você pediu (sem filtro vazio)
 bairros[e.bairro]=(bairros[e.bairro]||0)+1
 empresas[e.empresa]=(empresas[e.empresa]||0)+1
 
@@ -74,13 +94,14 @@ empresas[e.empresa]=(empresas[e.empresa]||0)+1
 let valorDia = total - despesas
 let faturamento = total
 
-document.getElementById("total").innerText="R$ "+valorDia
-document.getElementById("faturamento").innerText="R$ "+faturamento
-document.getElementById("dinheiro").innerText="R$ "+dinheiro
-document.getElementById("pix").innerText="R$ "+pix
-document.getElementById("pendente").innerText="R$ "+pendente
-document.getElementById("despesa").innerText="R$ "+despesas
-document.getElementById("entregas").innerText=entregas
+// usando formatação correta
+document.getElementById("total").innerText = formatar(valorDia)
+document.getElementById("faturamento").innerText = formatar(faturamento)
+document.getElementById("dinheiro").innerText = formatar(dinheiro)
+document.getElementById("pix").innerText = formatar(pix)
+document.getElementById("pendente").innerText = formatar(pendente)
+document.getElementById("despesa").innerText = formatar(despesas)
+document.getElementById("entregas").innerText = entregas
 
 
 const tbBairros=document.getElementById("bairros")
